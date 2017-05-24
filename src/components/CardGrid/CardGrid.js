@@ -9,17 +9,18 @@ export default class CardGrid extends Component {
   render() {
     const { trails } = this.props;
     const trailKeys = Object.keys(trails)
+    console.log(trailKeys);
 
-    if (!trails.length) {
+    if (!trailKeys.length) {
       return (
         <h3>No trails in the area</h3>
       )
     }
     return (
       <section className="card-grid">
-        { trailKeys.map((trail, index) => {
+        { trailKeys.map((key, index) => {
           return (
-            <Card trails={trails}/>
+            <Card key={index} trail={trails[key]}/>
           )
         })}
       </section>
