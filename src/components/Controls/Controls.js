@@ -8,8 +8,8 @@ export default class Controls extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchArea: ''
-
+      searchArea: '',
+      searchRadius: ''
     }
   }
 
@@ -17,15 +17,15 @@ export default class Controls extends Component {
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&components=locality:${location}&key=${geoCodeKey}`)
     .then((resp) => resp.json())
     .then((json) => json.results[0].geometry.location)
-    .then((coordinates) => this.getTrailsByLocation(coordinates.lat, coordinates.lng))
+    .then((coordinates) => this.getTrailsByLocation(coordinates.lat, coordinates.lng, this.state.searchRadius))
     .catch((error) => console.log(error, 'error fetching LatLong'))
     this.setState({ searchArea: ''})
+    this.setState({ searchRadius: ''})
   }
 
-  getTrailsByLocation(lat, long) {
+  getTrailsByLocation(lat, long, radius) {
     const { handleGetTrails } = this.props;
-    console.log(lat, long);
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&key=${trailsKey}`)
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=50&key=${trailsKey}`)
     .then((resp) => resp.json())
     .then((trails) => formatTrailData(trails.trails))
     .then((cleanedTrails) => handleGetTrails(cleanedTrails))
@@ -37,9 +37,15 @@ export default class Controls extends Component {
       <section  className='controls'>
         <label>Find trails near...</label>
         <input  type="text"
-                placeholder="Enter a location"
+                placeholder="enter a location"
                 value={this.state.searchArea}
                 onChange={(e) => {this.setState({ searchArea: e.target.value })}} />
+        <label>within...</label>
+        <input  type="text"
+                placeholder="enter a distance"
+                value={this.state.searchRadius}
+                onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
+        <label>miles</label>
         <button onClick={() => {this.searchByLocation(this.state.searchArea)}}>
           Search
         </button>

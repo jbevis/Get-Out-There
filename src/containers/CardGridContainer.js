@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import CardGrid from '../components/CardGrid/CardGrid';
-// import { getTrails } from '../actions/index';
-
+import { setFilter } from '../actions/index'
 
 const mapStateToProps = (state) => {
   return {
-    trails: state.trailsReducer
+    trails: state.trailsReducer,
+    filteredTrails: state.filterReducer
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     handleGetTrails: (trails) => dispatch(getTrails(trails))
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleFilter: (trails) => dispatch(setFilter(trails))
+  }
+}
 
-export default connect(mapStateToProps, null)(CardGrid)
+export default connect(mapStateToProps, mapDispatchToProps)(CardGrid)
