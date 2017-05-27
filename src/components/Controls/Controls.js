@@ -23,12 +23,17 @@ export default class Controls extends Component {
     this.setState({ searchRadius: ''})
   }
 
+  setStore(data) {
+    const { handleGetTrails, handleSetDisplay } = this.props;
+    handleGetTrails(data)
+    handleSetDisplay(data)
+  }
+
   getTrailsByLocation(lat, long, radius) {
-    const { handleGetTrails } = this.props;
     fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=50&key=${trailsKey}`)
     .then((resp) => resp.json())
     .then((trails) => formatTrailData(trails.trails))
-    .then((cleanedTrails) => handleGetTrails(cleanedTrails))
+    .then((cleanedTrails) => this.setStore(cleanedTrails))
     .catch((error) => console.log(error, 'error fetching trails'))
   }
 

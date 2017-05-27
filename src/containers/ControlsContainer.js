@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 import Controls from '../components/Controls/Controls';
-import { getTrails } from '../actions/index';
+import { getTrails, showTrails } from '../actions/index';
 
 
 const mapStateToProps = (state) => {
   return {
-    trails: state.trailsReducer
+    trails: state.trailsReducer,
+    displayTrails: state.displayReducer
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleGetTrails: (trails) => dispatch(getTrails(trails))
+    handleGetTrails: (trails) => dispatch(getTrails(trails)),
+    handleSetDisplay: (trails) => dispatch(showTrails(trails))
   }
 }
 
