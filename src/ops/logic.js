@@ -33,3 +33,21 @@ export const formatTrailData = (data) => {
     return acc
   },{})
 }
+
+export const difficultyLevel = (difficulty) => {
+  switch (difficulty.difficulty) {
+  case 'green':
+    return 'Easy'
+  case 'greenBlue':
+    return 'Easy/Intermediate'
+  case 'blue':
+    return 'Intermediate'
+  case 'blueBlack':
+    return 'Intermediate/Difficult'
+  case 'black':
+    return 'Difficult'
+  case 'dblack':
+    return 'Extremely Difficult'
+  default:
+  }
+}

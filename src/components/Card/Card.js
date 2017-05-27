@@ -1,36 +1,29 @@
 import React from 'react';
+import { difficultyLevel } from '../../ops/logic'
 import PropTypes from 'prop-types';
-import './Card.css'
+import './Card.css';
+import icon from './hikeicon.svg';
 
+const imgCheck = (image) => {
+  console.log(image);
+  return image === "" ? icon : image
+}
 
 export const Card = ({ trail }) => {
+
   return (
     <article className="trail-card">
-      <h4>{trail.name}</h4>
-      <p>Length: {trail.length} mi</p>
-      <p>Difficulty: {difficultyLevel(trail)}</p>
+      <img className="card-img" alt={trail.summary} src={imgCheck(trail.imgSqSmall)} />
+      <div className='card-text'>
+        <h4>{trail.name}</h4>
+        <p>{trail.summary}</p>
+        <p>Length: {trail.length} mi</p>
+        <p>Difficulty: {difficultyLevel(trail)}</p>
+      </div>
     </article>
   )
 }
 
 Card.propTypes = {
   trail: PropTypes.object.isRequired
-}
-
-const difficultyLevel = (difficulty) => {
-  switch (difficulty.difficulty) {
-    case 'green':
-      return 'Easy'
-    case 'greenBlue':
-      return 'Easy/Intermediate'
-    case 'blue':
-      return 'Intermediate'
-    case 'blueBlack':
-      return 'Intermediate/Difficult'
-    case 'black':
-      return 'Difficult'
-    case 'dblack':
-      return 'Extremely Difficult'
-    default:
-  }
 }

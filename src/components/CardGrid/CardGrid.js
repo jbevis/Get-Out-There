@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card } from '../Card/Card'
-// import FilterContainer from '../../containers/FilterContainer';
 
 export default class CardGrid extends Component {
   constructor(props) {
