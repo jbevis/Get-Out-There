@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ControlsContainer from '../../containers/ControlsContainer';
 import CardGridContainer from '../../containers/CardGridContainer';
+import TrailConditionsContainer from '../../containers/TrailConditionsContainer';
 import { NavBar } from '../NavBar/NavBar';
 import { Maps } from '../Maps/Maps';
 import { Route, Switch } from 'react-router-dom';
@@ -21,6 +22,9 @@ export default class App extends Component {
           <Route exact path='/' component={CardGridContainer} />
           <Route exact path='/maps'
             render={() => { return (<Maps history={this.props.history}/>)}}
+          />
+          <Route exact path='/trail-data'
+            render={() => { return (<TrailConditionsContainer history={this.props.history}/>)}}
           />
         </Switch>
       </main>
