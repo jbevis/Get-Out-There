@@ -30,7 +30,7 @@ export default class Controls extends Component {
   }
 
   getTrailsByLocation(lat, long, radius) {
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=50&key=${trailsKey}`)
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&key=${trailsKey}`)
     .then((resp) => resp.json())
     .then((trails) => formatTrailData(trails.trails))
     .then((cleanedTrails) => this.setStore(cleanedTrails))

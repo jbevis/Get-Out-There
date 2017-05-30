@@ -24,7 +24,7 @@ export default class CardGrid extends Component {
   }
 
   render() {
-    const { displayTrails, filteredTrails } = this.props;
+    const { displayTrails, filteredTrails, handleGetConditions } = this.props;
     const trailKeys = Object.keys(displayTrails)
 
     if (!trailKeys.length) {
@@ -48,7 +48,9 @@ export default class CardGrid extends Component {
         <button onClick={() => this.filterByDifficulty(this.state.filter)}>Filter</button>
         { trailKeys.map((key, index) => {
           return (
-            <Card key={index} trail={displayTrails[key]}/>
+            <Card key={index}
+                  trail={displayTrails[key]}
+                  handleGetConditions={handleGetConditions}/>
           )
         }) }
       </section>

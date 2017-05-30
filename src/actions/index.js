@@ -18,3 +18,10 @@ export const showTrails = (trails) => {
     trails
   }
 }
+
+export const getConditions = (trail) => {
+  return {
+    type: 'GET_CONDITIONS',
+    trail
+  }
+}
