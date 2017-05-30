@@ -13,15 +13,6 @@ export default class Controls extends Component {
     }
   }
 
-  searchByLocation(location) {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&components=locality:${location}&key=${geoCodeKey}`)
-    .then((resp) => resp.json())
-    .then((json) => json.results[0].geometry.location)
-    .then((coordinates) => this.getTrailsByLocation(coordinates.lat, coordinates.lng, this.state.searchRadius))
-    .catch((error) => console.log(error, 'error fetching LatLong'))
-    this.setState({ searchArea: ''})
-    this.setState({ searchRadius: ''})
-  }
 
   setStore(data) {
     const { handleGetTrails, handleSetDisplay } = this.props;
@@ -30,11 +21,25 @@ export default class Controls extends Component {
   }
 
   getTrailsByLocation(lat, long, radius) {
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&key=${trailsKey}`)
+    console.log(radius);
+    const apiCall = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=20&key=${trailsKey}`
+    console.log(apiCall);
+    fetch(apiCall)
     .then((resp) => resp.json())
-    .then((trails) => formatTrailData(trails.trails))
+    .then((data) => formatTrailData(data.trails))
     .then((cleanedTrails) => this.setStore(cleanedTrails))
     .catch((error) => console.log(error, 'error fetching trails'))
+  }
+
+  searchByLocation(location, radius) {
+    console.log(location, radius);
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}`)
+    .then((resp) => resp.json())
+    .then((json) => json.results[0].geometry.location)
+    .then((coordinates) => this.getTrailsByLocation(coordinates.lat, coordinates.lng, radius))
+    .catch((error) => console.log(error, 'error fetching LatLong'))
+    this.setState({ searchArea: ''})
+    this.setState({ searchRadius: ''})
   }
 
   render() {
@@ -51,7 +56,7 @@ export default class Controls extends Component {
                 value={this.state.searchRadius}
                 onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
         <label>miles</label>
-        <button onClick={() => {this.searchByLocation(this.state.searchArea)}}>
+        <button onClick={() => {this.searchByLocation(this.state.searchArea, this.state.searchRadius)}}>
           Search
         </button>
       </section>
