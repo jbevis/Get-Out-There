@@ -8,8 +8,6 @@ import { BrowserRouter as Router, browserHistory, Route } from 'react-router-dom
 
 import rootReducer from './reducers/index'
 
-
-
 import App from './components/App/App';
 import './index.css';
 

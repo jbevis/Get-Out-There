@@ -29,7 +29,7 @@ export default class CardGrid extends Component {
 
     if (!trailKeys.length) {
       return (
-        <h3>No trails in the area</h3>
+        <h3>Find your next adventure</h3>
       )
     }
     return (
