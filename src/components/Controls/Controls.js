@@ -13,7 +13,6 @@ export default class Controls extends Component {
     }
   }
 
-
   setStore(data) {
     const { handleGetTrails, handleSetDisplay } = this.props;
     handleGetTrails(data)
@@ -21,10 +20,7 @@ export default class Controls extends Component {
   }
 
   getTrailsByLocation(lat, long, radius) {
-    console.log(radius);
-    const apiCall = `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=20&key=${trailsKey}`
-    console.log(apiCall);
-    fetch(apiCall)
+    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=20&key=${trailsKey}`)
     .then((resp) => resp.json())
     .then((data) => formatTrailData(data.trails))
     .then((cleanedTrails) => this.setStore(cleanedTrails))
@@ -32,7 +28,6 @@ export default class Controls extends Component {
   }
 
   searchByLocation(location, radius) {
-    console.log(location, radius);
     fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}`)
     .then((resp) => resp.json())
     .then((json) => json.results[0].geometry.location)
