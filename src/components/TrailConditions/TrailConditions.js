@@ -1,39 +1,23 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryArea, VictoryStack, VictoryTheme } from 'victory';
 import { NavLink } from 'react-router-dom';
 
 export const TrailConditions = ({ currentConditions }) => {
-  console.log(currentConditions.length, currentConditions.ascent);
-  const data2012 = [
-  {quarter: 1, earnings: 13000},
-  {quarter: 2, earnings: 16500},
-  {quarter: 3, earnings: 14250},
-  {quarter: 4, earnings: 19000}
+  const elevGain = [
+  {trailPoint: 1, elev: currentConditions.high},
+  {trailPoint: 2, elev: currentConditions.high + (currentConditions.ascent / 2)},
+  {trailPoint: 3, elev: currentConditions.low},
+  {trailPoint: 4, elev: currentConditions.high + (currentConditions.ascent / 2)},
+  {trailPoint: 5, elev: currentConditions.high}
 ];
 
-const data2013 = [
-  {quarter: 1, earnings: 15000},
-  {quarter: 2, earnings: 12500},
-  {quarter: 3, earnings: 19500},
-  {quarter: 4, earnings: 13000}
+  const totalGain = [
+  {trailPoint: 1, elev: currentConditions.ascent},
+  {trailPoint: 2, elev: currentConditions.ascent - (currentConditions.ascent / 2)},
+  {trailPoint: 3, elev: 0},
+  {trailPoint: 4, elev: (currentConditions.ascent / 2)},
+  {trailPoint: 5, elev: currentConditions.ascent}
 ];
-
-const data2014 = [
-  {quarter: 1, earnings: 11500},
-  {quarter: 2, earnings: 13250},
-  {quarter: 3, earnings: 20000},
-  {quarter: 4, earnings: 15500}
-];
-
-const data2015 = [
-  {quarter: 1, earnings: 18000},
-  {quarter: 2, earnings: 13250},
-  {quarter: 3, earnings: 15000},
-  {quarter: 4, earnings: 12000}
-];
-
-
 
   const currentKeys = Object.keys(currentConditions)
   if (!currentKeys.length) {
@@ -50,7 +34,6 @@ const data2015 = [
   }
 
   return (
-
     <section className="trail-conditions">
       <NavLink to='/'
                activeClassName='nav-button'
@@ -58,54 +41,36 @@ const data2015 = [
         Back To Trails
       </NavLink>
       <h4>{currentConditions.name}</h4>
-      <img alt={currentConditions.conditionColor} src={currentConditions.conditionImg} />
+      <img  alt={currentConditions.conditionColor}
+            src={currentConditions.conditionImg} />
       <p>{currentConditions.conditionStatus}</p>
       <p>{currentConditions.conditionDetails}</p>
       <p>Latest Update: {currentConditions.conditionDate}</p>
       <p>length: {currentConditions.length} miles</p>
       <section className="data-sets">
-        <VictoryChart
-        domainPadding={20}
-        theme={VictoryTheme.material}
-      >
-        <VictoryAxis
-          tickValues={[1, 2, 3, 4]}
-          tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+        <VictoryChart domainPadding={20}
+                      theme={VictoryTheme.material}>
+        <VictoryAxis  tickValues={[1, 2, 3, 4, 5]}
+                      tickFormat={[ "Trailhead",
+                                    "1/2",
+                                    "Summit",
+                                    "3/4",
+                                    "End"
+                                  ]}
         />
-        <VictoryAxis
-          dependentAxis
-          tickFormat={(x) => (`$${x / 1000}k`)}
-        />
-        <VictoryStack>
-          <VictoryBar
-            data={data2012}
-            x="quarter"
-            y="earnings"
-          />
-          <VictoryBar
-            data={data2013}
-            x="quarter"
-            y="earnings"
-          />
-          <VictoryBar
-            data={data2014}
-            x="quarter"
-            y="earnings"
-          />
-          <VictoryBar
-            data={data2015}
-            x="quarter"
-            y="earnings"
-          />
+        <VictoryAxis  dependentAxis
+                      tickFormat={(x) => (`${x}'`)} />
+        <VictoryStack colorScale={"green"} >
+          <VictoryBar data={elevGain}
+                      x="trailPoint"
+                      y="elev"
+                      animate={{ onLoad: { duration: 500 } }} />
+          <VictoryBar data={totalGain}
+                      x="trailPoint"
+                      y="elev"
+                      animate={{ onLoad: { duration: 500 } }} />
         </VictoryStack>
       </VictoryChart>
-        {/* <VictoryChart domainPadding={10}>
-          <VictoryBar data={trailLength} x="label" y="stat"
-            animate={{ onLoad: { duration: 1000 } }}
-            style={{ data: { width: 50 } }}
-            colorScale={'warm'}
-          />
-        </VictoryChart> */}
       </section>
     </section>
   )
