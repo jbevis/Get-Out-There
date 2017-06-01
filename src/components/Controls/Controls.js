@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Controls.css';
 import { formatTrailData } from '../../ops/logic'
-import { geoCodeKey, trailsKey} from '../../apiKeys'
-
 
 export default class Controls extends Component {
   constructor(props) {
@@ -13,28 +11,12 @@ export default class Controls extends Component {
     }
   }
 
-  setStore(data) {
-    const { handleGetTrails, handleSetDisplay } = this.props;
-    handleGetTrails(data)
-    handleSetDisplay(data)
-  }
+  setStore(location, radius) {
+    const { trails, handleGetTrails, handleSetDisplay } = this.props;
 
-  getTrailsByLocation(lat, long, radius) {
-    fetch(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${long}&maxDistance=${radius}&maxResults=20&key=${trailsKey}`)
-    .then((resp) => resp.json())
-    .then((data) => formatTrailData(data.trails))
-    .then((cleanedTrails) => this.setStore(cleanedTrails))
-    .catch((error) => console.log(error, 'error fetching trails'))
-  }
-
-  searchByLocation(location, radius) {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}`)
-    .then((resp) => resp.json())
-    .then((json) => json.results[0].geometry.location)
-    .then((coordinates) => this.getTrailsByLocation(coordinates.lat, coordinates.lng, radius))
-    .catch((error) => console.log(error, 'error fetching LatLong'))
-    this.setState({ searchArea: ''})
-    this.setState({ searchRadius: ''})
+    handleGetTrails(location, radius)
+    handleSetDisplay(trails)
+    this.setState({ searchArea: '', searchRadius: ''})
   }
 
   render() {
@@ -51,7 +33,9 @@ export default class Controls extends Component {
                 value={this.state.searchRadius}
                 onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
         <label>miles</label>
-        <button onClick={() => {this.searchByLocation(this.state.searchArea, this.state.searchRadius)}}>
+        <button onClick={() => {
+          this.setStore(this.state.searchArea, this.state.searchRadius)
+        }}>
           Search
         </button>
       </section>

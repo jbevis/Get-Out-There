@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card } from '../Card/Card'
+import { Card } from '../Card/Card';
+
 
 export default class CardGrid extends Component {
   constructor(props) {
@@ -24,12 +25,13 @@ export default class CardGrid extends Component {
   }
 
   render() {
-    const { displayTrails, filteredTrails, handleGetConditions } = this.props;
+    const { displayTrails, handleGetConditions } = this.props;
     const trailKeys = Object.keys(displayTrails)
 
     if (!trailKeys.length) {
       return (
         <h3>Find your next adventure</h3>
+        // <img src="../images/loading.gif" alt="waiting on results"/>
       )
     }
     return (
