@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryArea, VictoryStack, VictoryTheme } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryStack, VictoryTheme } from 'victory';
 import { NavLink } from 'react-router-dom';
 
 export const TrailConditions = ({ currentConditions }) => {
