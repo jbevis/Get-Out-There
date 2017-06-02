@@ -22,18 +22,21 @@ export default class Controls extends Component {
   render() {
     return (
       <section  className='controls'>
-        <label>Find trails near...</label>
-        <input  type="text"
-                placeholder="enter a location"
-                value={this.state.searchArea}
-                onChange={(e) => {this.setState({ searchArea: e.target.value })}} />
-        <label>within...</label>
-        <input  type="text"
-                placeholder="enter a distance"
-                value={this.state.searchRadius}
-                onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
-        <label>miles</label>
-        <button onClick={() => {
+        <div className='input'>
+          <label>Find trails near...</label>
+          <input  type="text"
+            placeholder="enter a location"
+            value={this.state.searchArea}
+            onChange={(e) => {this.setState({ searchArea: e.target.value })}} />
+        </div>
+        <div className='input'>
+          <label>within...</label>
+          <input  type="text"
+            placeholder="....miles of"
+            value={this.state.searchRadius}
+            onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
+        </div>
+        <button id='search'onClick={() => {
           this.setStore(this.state.searchArea, this.state.searchRadius)
         }}>
           Search

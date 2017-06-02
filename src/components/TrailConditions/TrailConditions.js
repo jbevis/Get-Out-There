@@ -49,7 +49,9 @@ export const TrailConditions = ({ currentConditions }) => {
       <p>length: {currentConditions.length} miles</p>
       <section className="data-sets">
         <VictoryChart domainPadding={20}
-                      theme={VictoryTheme.material}>
+                      theme={VictoryTheme.material}
+                      responsive={false}
+                      id='elevation'>
         <VictoryAxis  tickValues={[1, 2, 3, 4, 5]}
                       tickFormat={[ "Trailhead",
                                     "1/2",
