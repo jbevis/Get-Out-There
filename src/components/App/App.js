@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import ControlsContainer from '../../containers/ControlsContainer';
 import CardGridContainer from '../../containers/CardGridContainer';
 import TrailConditionsContainer from '../../containers/TrailConditionsContainer';
-import { NavBar } from '../NavBar/NavBar';
 import { Maps } from '../Maps/Maps';
-import { Route, Switch } from 'react-router-dom';
-
+import { Route, Switch, NavLink } from 'react-router-dom';
 import './App.css';
 
 export default class App extends Component {
@@ -18,7 +16,10 @@ export default class App extends Component {
       <main className="App">
         <header>
           <h1>Get Out There</h1>
-          <NavBar />
+          <div className='nav-links'>
+            <NavLink to='/' activeClassName='nav-button' className='button'>Home</NavLink>
+            <NavLink to='/trail-data' activeClassName='nav-button' className='button'>Trail Conditions</NavLink>
+          </div>
         </header>
         <ControlsContainer />
         <Switch>

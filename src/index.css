@@ -3,6 +3,10 @@ body {
     text-align: center;
     padding: 20px;
     font-family: sans-serif;
+    background-image: url('./images/telluride.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 0%;
 }
 
 h1 {
