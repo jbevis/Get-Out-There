@@ -36,9 +36,10 @@ export default class Controls extends Component {
             value={this.state.searchRadius}
             onChange={(e) => {this.setState({ searchRadius: e.target.value })}} />
         </div>
-        <button id='search'onClick={() => {
-          this.setStore(this.state.searchArea, this.state.searchRadius)
-        }}>
+        <button id='search'
+                onClick={() => {
+                  this.setStore(this.state.searchArea, this.state.searchRadius)}
+        }>
           Search
         </button>
       </section>

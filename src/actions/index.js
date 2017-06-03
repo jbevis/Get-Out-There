@@ -16,7 +16,6 @@ export const setFilter = (filter) => {
 }
 
 export const showTrails = (trails) => {
-  console.log('show trails fired', trails)
   return {
     type: 'SHOW_TRAILS',
     trails
@@ -39,10 +38,10 @@ export const fetchTrails = (location, radius) => {
   }
 }
 
-// export const fetchConditions = (data) => {
-//   return (dispatch) => {
-//     return apiCalls.getTrailConditions(data.id)
-//     .then((trail) => dispatch(getConditions(formatConditionData(data, trail[0]))))
-//     .catch((error) => console.error(error))
-//   }
-// }
+export const fetchConditions = (trail) => {
+  return (dispatch) => {
+    return apiCalls.getTrailConditions(trail.id)
+    .then((conditions) => dispatch(getConditions(formatConditionData(trail, conditions))))
+    .catch((error) => console.error(error))
+  }
+}

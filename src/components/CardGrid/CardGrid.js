@@ -31,7 +31,6 @@ export default class CardGrid extends Component {
     if (!trailKeys.length) {
       return (
         <h3>Find your next adventure</h3>
-        // <img src="../images/loading.gif" alt="waiting on results"/>
       )
     }
     return (
@@ -47,7 +46,7 @@ export default class CardGrid extends Component {
           <option value='black'>Difficult</option>
           <option value='dblack'>Extremely Difficult</option>
         </select>
-        <button onClick={() => this.filterByDifficulty(this.state.filter)}>Filter</button>
+        <button className='filter-btn' onClick={() => this.filterByDifficulty(this.state.filter)}>Filter</button>
         { trailKeys.map((key, index) => {
           return (
             <Card key={index}
