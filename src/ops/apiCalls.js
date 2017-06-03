@@ -17,4 +17,11 @@ export default class apiCalls {
     .then((resp) => resp.json())
     .catch((error) => console.log(error, 'error fetching trails'))
   }
+
+  static getTrailConditions (id) {
+    return fetch(`https://www.hikingproject.com/data/get-conditions?ids=${id}&key=${trailsKey}`)
+    .then((resp) => resp.json())
+    .then((json) => json[0])
+    .catch((error) => console.log(error, 'error fetching trail conditions'))
+  }
 }

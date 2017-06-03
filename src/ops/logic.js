@@ -1,5 +1,7 @@
-export const formatConditionData = (trailInfo, conditionsCall) => {
-  return Object.assign({}, trailInfo, conditionsCall)
+import icon from '../images/hikeicon.svg';
+
+export const formatConditionData = (trail, conditions) => {
+  return Object.assign({}, trail, conditions)
 }
 
 export const formatTrailData = (data) => {
@@ -8,7 +10,11 @@ export const formatTrailData = (data) => {
       acc[trail.name] = trail
     }
     return acc
-  },{})
+  }, {})
+}
+
+export const imgCheck = (image) => {
+  return image === "" ? icon : image
 }
 
 export const difficultyLevel = (difficulty) => {
