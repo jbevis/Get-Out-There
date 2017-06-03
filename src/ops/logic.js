@@ -1,4 +1,4 @@
-import icon from '../images/hikeicon.svg';
+// import icon from '../images/hikeicon.png';
 
 export const formatConditionData = (trail, conditions) => {
   return Object.assign({}, trail, conditions)
