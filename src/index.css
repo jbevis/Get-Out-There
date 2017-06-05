@@ -65,6 +65,11 @@ button:hover {
   align-items: center;
 }
 
+.copyright {
+  color: #E6DED1;
+  margin-top: 320px;
+}
+
 .nav-links {
   display: flex;
   justify-content: space-between;
