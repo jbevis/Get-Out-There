@@ -7,7 +7,7 @@ This is a personal project that was part of the curriculum for mod 3 at the Turi
 The app was built using React-Redux with React Router 4. The data visualization is handled by Victory js. Data was sourced using the google maps geocode api for returning latitude and longitude of a location that was then passed to The Hiking Project's api for trail data.
 
 #### Code Example
-`return (
+```return (
   <section className="card-grid">
     <div id="filter-bar">
       <label>Filter by:</label>
@@ -34,7 +34,7 @@ The app was built using React-Redux with React Router 4. The data visualization 
       )
     }) }
   </section>
-)`
+)```
 
 #### Start Dev Server
 `npm start`  
