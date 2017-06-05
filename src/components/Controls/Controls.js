@@ -54,6 +54,6 @@ export default class Controls extends Component {
 
 Controls.propTypes = {
   trails: PropTypes.object.isRequired,
-  handleGetConditions: PropTypes.func.isRequired,
+  handleGetTrails: PropTypes.func.isRequired,
   handleSetDisplay: PropTypes.func.isRequired,
 }

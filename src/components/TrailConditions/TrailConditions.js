@@ -65,7 +65,7 @@ export const TrailConditions = ({ currentConditions }) => {
         <VictoryAxis  dependentAxis
                       label='Elevation (feet)'
                       tickFormat={(x) => (`${x}'`)} />
-        <VictoryStack colorScale={"green"} >
+        <VictoryStack colorScale={"heatmap"} >
           <VictoryBar data={elevGain}
                       x="trailPoint"
                       y="elev"
