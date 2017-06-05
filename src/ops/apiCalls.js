@@ -1,4 +1,6 @@
 import { trailsKey } from '../apiKeys';
+import fetch from 'isomorphic-fetch';
+
 
 export default class apiCalls {
   static searchByLocation (location, radius) {
