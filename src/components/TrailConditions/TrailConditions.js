@@ -1,6 +1,7 @@
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryStack, VictoryTheme } from 'victory';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const TrailConditions = ({ currentConditions }) => {
   const elevGain = [
@@ -76,4 +77,8 @@ export const TrailConditions = ({ currentConditions }) => {
       </section>
     </section>
   )
+}
+
+TrailConditions.propTypes = {
+  currentConditions: PropTypes.object.isRequired,
 }

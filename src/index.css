@@ -196,3 +196,27 @@ button:hover {
 .trail-conditions .button:hover {
   color: #5B775F;
 }
+
+@media screen and (max-width: 950px) {
+  .trail-card {
+    justify-content: space-around;
+  }
+
+  .card-text {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  #filter-bar {
+    flex-direction: column;
+  }
+
+  .trail-card {
+    flex-direction: column;
+  }
+}

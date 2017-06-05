@@ -4,7 +4,6 @@ import CardGridContainer from '../../containers/CardGridContainer';
 import TrailConditionsContainer from '../../containers/TrailConditionsContainer';
 import { Maps } from '../Maps/Maps';
 import { Route, Switch, NavLink } from 'react-router-dom';
-// import './App.css';
 
   export const App = () => {
     return (

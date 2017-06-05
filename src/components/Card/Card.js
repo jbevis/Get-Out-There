@@ -1,7 +1,6 @@
 import React from 'react';
 import { difficultyLevel, imgCheck } from '../../ops/logic'
 import PropTypes from 'prop-types';
-// import './Card.css';
 import { NavLink } from 'react-router-dom'
 
 export const Card = ({ trail, handleGetConditions }) => {
