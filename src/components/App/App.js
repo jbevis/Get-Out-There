@@ -25,6 +25,9 @@ import { Route, Switch, NavLink } from 'react-router-dom';
             render={() => { return (<TrailConditionsContainer history={ history }/>)}}
           />
         </Switch>
+        <footer>
+          <p className='copyright'>&#169; 2017 Jack Bevis</p>                  
+        </footer>
     </main>
   )
 }
