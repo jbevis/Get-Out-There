@@ -2,16 +2,21 @@ body {
     background-color: #f4f4f4;
     text-align: center;
     padding: 20px;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-image: url('./images/telluride.jpeg');
+    background-blend-mode: overlay;
+    background-color: #4f4e4e;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 80%;
+    color: #27282B;
 }
 
 h1 {
     font-weight: 100;
     font-size: 35px;
+    font-family: 'Rock Salt', cursive;
+    color: #FFE242;
     margin-top: 0;
     letter-spacing: 8px;
     border-bottom: 1px solid #aaa;
@@ -29,7 +34,7 @@ input {
     width: 180px;
     padding: 5px;
     margin-right: 5px;
-    box-shadow: 1px 1px 45px #AAF;
+    /*box-shadow: 1px 1px 45px #FFE242;*/
     border-radius: 10px;
     font-size: 16px;
     font-weight: 100;
@@ -44,49 +49,150 @@ button {
     width: 80px;
     border-radius: 10px;
     /* display: block; */
-    background-color: #3f3f55;
+    background-color: #5B775F;
     color: white;
     text-transform: uppercase;
 }
 
 button:hover {
-  color: red;
+  color: #FFE242;
   cursor: pointer;
 }
 
-ul {
-    width: 500px;
-    margin: 0 auto;
-    box-shadow: 1px 1px 42px #aaa;
-    margin-top: 30px;
-    padding: 30px;
-    font-weight: 100;
-    letter-spacing: 5px;
-    font-size: 20px;
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-li {
-  list-style-type: none;
-  margin: 10px 0;
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0px;
 }
 
-.FilterMenu {
-    bottom: 0;
-    width: 100%;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-    padding: 20px;
-    margin-top: 30px;
+.button {
+  text-decoration: none;
+  color: #E6DED1;
 }
 
-.FilterMenu a {
-    text-decoration: none;
-    color: #aaa;
-    text-transform: uppercase;
-    margin: 0 20px;
-    padding: 16px;
+.button:hover {
+  color: #FFE242;
 }
 
-.FilterMenu a:hover {
-  color: black;
+.controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 15px;
+}
+
+.input label {
+  margin-left: 5px;
+  margin-bottom: 5px;
+  color: #FFE242;
+}
+
+#search {
+  margin-top: 25px;
+  font-size: 12px;
+}
+
+.no-data {
+  color: #E6DED1;
+}
+
+.card-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 80%;
+}
+
+#filter-bar {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#filter-bar select {
+  height: 42px;
+  font-size: 12px;
+  margin: 10px 30px;
+}
+
+.trail-card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 1px 1px 45px #5B775F;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #E6DED1;
+  margin: 15px 0px;
+  width: 80%;
+
+}
+
+.card-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-img {
+  position: relative;
+  margin-right: 10px;
+}
+
+.card-text h4 {
+  max-width: 175px;
+  margin: 20px, 0px;
+}
+
+.card-text p {
+  max-width: 200px;
+  margin: 20px, 0px;
+}
+
+
+.card-text .button {
+  color: #27282B;
+}
+
+.card-text .button:hover {
+  color: #5B775F;
+}
+
+.trail-conditions {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 1px 1px 45px #5B775F;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #E6DED1;
+  margin: 15px 0px;
+  max-width: 75%;
+}
+
+.trail-conditions .button {
+  color: #27282B;
+}
+
+.trail-conditions .button:hover {
+  color: #5B775F;
 }

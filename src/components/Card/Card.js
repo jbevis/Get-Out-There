@@ -17,7 +17,7 @@ export const Card = ({ trail, handleGetConditions }) => {
                  activeClassName='nav-button'
                  className='button'
                  onClick={() => handleGetConditions(trail)}>
-          More Info
+          Check Trail Conditions
         </NavLink>
       </div>
     </article>
