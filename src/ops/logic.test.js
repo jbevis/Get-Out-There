@@ -1,6 +1,7 @@
 import * as helpers from './logic';
 import icon from '../images/hikeicon.svg';
-import expect from 'expect'
+import expect from 'expect';
+import { createElevGain, createTotalGain } from './graphData';
 
 describe('testing helper functions', () => {
 
@@ -86,5 +87,28 @@ describe('testing helper functions', () => {
     expect(helpers.difficultyLevel(blueBlack)).toEqual('Intermediate/Difficult')
     expect(helpers.difficultyLevel(black)).toEqual('Difficult')
     expect(helpers.difficultyLevel(dblack)).toEqual('Extremely Difficult')
+  })
+
+  it('should create data for the elevation graph', () => {
+    const mockData = { high: 7000,
+                 low: 5280,
+                 ascent: 1720
+               }
+
+    const expectedGain = [  { elev: 7000, trailPoint: 1 },
+                            { elev: 7860, trailPoint: 2 },
+                            { elev: 5280, trailPoint: 3 },
+                            { elev: 7860, trailPoint: 4 },
+                            { elev: 7000, trailPoint: 5 }
+                          ]
+    const expectedTotal = [ { elev: 1720, trailPoint: 1 },
+                            { elev: 860, trailPoint: 2 },
+                            { elev: 0, trailPoint: 3 },
+                            { elev: 860, trailPoint: 4 },
+                            { elev: 1720, trailPoint: 5 }
+                          ]
+
+    expect(createElevGain(mockData)).toEqual(expectedGain)
+    expect(createTotalGain(mockData)).toEqual(expectedTotal)
   })
 })
