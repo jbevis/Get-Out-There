@@ -48,6 +48,7 @@ export const TrailConditions = ({ currentConditions }) => {
       <p>{currentConditions.conditionDetails}</p>
       <p>Latest Update: {currentConditions.conditionDate}</p>
       <p>length: {currentConditions.length} miles</p>
+      <p>Elevation Gain:</p>
       <section className="data-sets">
         <VictoryChart domainPadding={20}
                       theme={VictoryTheme.material}
@@ -62,6 +63,7 @@ export const TrailConditions = ({ currentConditions }) => {
                                   ]}
         />
         <VictoryAxis  dependentAxis
+                      label='Elevation (feet)'
                       tickFormat={(x) => (`${x}'`)} />
         <VictoryStack colorScale={"green"} >
           <VictoryBar data={elevGain}

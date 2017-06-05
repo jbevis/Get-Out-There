@@ -189,6 +189,10 @@ button:hover {
   max-width: 75%;
 }
 
+.trail-conditions p {
+  max-width: 80px;
+}
+
 .trail-conditions .button {
   color: #27282B;
 }

@@ -36,7 +36,7 @@ export default class CardGrid extends Component {
     return (
       <section className="card-grid">
         <div id="filter-bar">
-          <label>Filter by:</label>
+          <label>Filter by Difficulty:</label>
           <select name='difficulty'
             onChange={(e) => {this.setState({filter: e.target.value})}}>
             <option value='show-all'>Show All</option>
