@@ -16,7 +16,7 @@ describe('TrailConditions testing', () => {
     const currentConditions = wrapper.find('p')
 
     expect(wrapper.find('h4').length).toEqual(1)
-    expect(wrapper.find('p').length).toEqual(4)
+    expect(wrapper.find('p').length).toEqual(5)
 
     expect(trailName.node.props.children).toEqual('Highline Canal Trail')
     expect(currentConditions.node.props.children).toEqual('All Clear')
