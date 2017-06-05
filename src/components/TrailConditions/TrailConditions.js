@@ -22,11 +22,11 @@ export const TrailConditions = ({ currentConditions }) => {
   const currentKeys = Object.keys(currentConditions)
   if (!currentKeys.length) {
     return (
-      <section className="trail-conditions">
+      <section   className="trail-conditions">
         <NavLink to='/'
-        activeClassName='nav-button'
-        className='button'>
-        Back To Trails
+                 activeClassName='nav-button'
+                 className='button'>
+          Back To Trails
         </NavLink>
         <h4>Please select a trail to see conditions</h4>
       </section>

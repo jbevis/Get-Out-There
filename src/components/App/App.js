@@ -4,14 +4,9 @@ import CardGridContainer from '../../containers/CardGridContainer';
 import TrailConditionsContainer from '../../containers/TrailConditionsContainer';
 import { Maps } from '../Maps/Maps';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import './App.css';
+// import './App.css';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
+  export const App = () => {
     return (
       <main className="App">
         <header>
@@ -23,15 +18,14 @@ export default class App extends Component {
         </header>
         <ControlsContainer />
         <Switch>
-          <Route exact path='/' component={CardGridContainer} />
+          <Route exact path='/' component={ CardGridContainer } />
           <Route exact path='/maps'
-            render={() => { return (<Maps history={this.props.history}/>)}}
+            render={() => { return (<Maps history={ history }/>)}}
           />
           <Route exact path='/trail-data'
-            render={() => { return (<TrailConditionsContainer history={this.props.history}/>)}}
+            render={() => { return (<TrailConditionsContainer history={ history }/>)}}
           />
         </Switch>
-      </main>
-    );
-  }
+    </main>
+  )
 }
