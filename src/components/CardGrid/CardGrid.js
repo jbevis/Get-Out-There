@@ -46,7 +46,10 @@ export default class CardGrid extends Component {
           <option value='black'>Difficult</option>
           <option value='dblack'>Extremely Difficult</option>
         </select>
-        <button className='filter-btn' onClick={() => this.filterByDifficulty(this.state.filter)}>Filter</button>
+        <button className='filter-btn'
+                onClick={() => this.filterByDifficulty(this.state.filter)}>
+          Filter
+        </button>
         { trailKeys.map((key, index) => {
           return (
             <Card key={index}
