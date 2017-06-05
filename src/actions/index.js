@@ -1,5 +1,7 @@
 import { formatTrailData, formatConditionData } from '../ops/logic';
 import apiCalls from '../ops/apiCalls'
+import fetch from 'isomorphic-fetch';
+
 
 export const getTrails = (trails) => {
   return {
@@ -22,10 +24,10 @@ export const showTrails = (trails) => {
   }
 }
 
-export const getConditions = (trail) => {
+export const getConditions = (conditions) => {
   return {
     type: 'GET_CONDITIONS',
-    trail
+    conditions
   }
 }
 
