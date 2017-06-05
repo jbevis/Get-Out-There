@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './Controls.css';
+import PropTypes from 'prop-types';
 
 export default class Controls extends Component {
   constructor(props) {
@@ -50,4 +50,10 @@ export default class Controls extends Component {
       </section>
     )
   }
+}
+
+Controls.propTypes = {
+  trails: PropTypes.object.isRequired,
+  handleGetConditions: PropTypes.func.isRequired,
+  handleSetDisplay: PropTypes.func.isRequired,
 }

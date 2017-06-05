@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from '../Card/Card';
-
+import PropTypes from 'prop-types';
 
 export default class CardGrid extends Component {
   constructor(props) {
@@ -62,4 +62,12 @@ export default class CardGrid extends Component {
       </section>
     )
   }
+}
+
+CardGrid.propTypes = {
+  trails: PropTypes.object.isRequired,
+  displayTrails: PropTypes.object.isRequired,
+  handleGetConditions: PropTypes.func.isRequired,
+  handleSetDisplay: PropTypes.func.isRequired,
+  handleGetConditions: PropTypes.func.isRequired
 }
