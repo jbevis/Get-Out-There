@@ -10,10 +10,6 @@ import { Route, Switch, NavLink } from 'react-router-dom';
       <main className="App">
         <header>
           <h1>Get Out There</h1>
-          <div className='nav-links'>
-            <NavLink to='/' activeClassName='nav-button' className='button'>Home</NavLink>
-            <NavLink to='/trail-data' activeClassName='nav-button' className='button'>Trail Conditions</NavLink>
-          </div>
         </header>
         <ControlsContainer />
         <Switch>
@@ -26,7 +22,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
           />
         </Switch>
         <footer>
-          <p className='copyright'>&#169; 2017 Jack Bevis</p>                  
+          <p className='copyright'>&#169; 2017 Jack Bevis</p>
         </footer>
     </main>
   )

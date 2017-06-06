@@ -11,7 +11,7 @@ export const trails = {
                                              latitude: 39.9379,
                                              length: 8.9,
                                              location: 'Lochbuie, Colorado',
-                                             longitude: -104.7525, 
+                                             longitude: -104.7525,
                                              low: 5105,
                                              name: 'Barr Lake Perimeter Trail',
                                              starVotes: 2,
@@ -96,7 +96,9 @@ export const trails = {
                                              starVotes: 0,
                                              stars: 0,
                                              summary: '',
-                                             type: 'Connector', url: 'https://www.hikingproject.com/trail/7015162/inlet-gazebo-trail' },
+                                             type: 'Connector',
+                                             url: 'https://www.hikingproject.com/trail/7015162/inlet-gazebo-trail'
+                                           },
 }
 
 export const conditions = {

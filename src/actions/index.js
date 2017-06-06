@@ -10,17 +10,11 @@ export const getTrails = (trails) => {
   }
 }
 
-export const setFilter = (filter) => {
-  return {
-    type: 'SET_FILTER',
-    filter
-  }
-}
-
-export const showTrails = (trails) => {
+export const showTrails = (trails, diffLevel) => {
   return {
     type: 'SHOW_TRAILS',
-    trails
+    trails,
+    diffLevel
   }
 }
 

@@ -27,22 +27,6 @@ describe('Testing actions', () => {
     expect(actions.getTrails(trails)).toEqual(expectedAction)
   })
 
-  it('should create an action to set filtered trails', () => {
-    const filter = { trailA: { name: 'trailA',
-                               difficulty: 'green',
-                               length: 5.5,
-                               summary: 'its a great trail'
-                             }
-                           }
-
-    const expectedAction = {
-      type: 'SET_FILTER',
-      filter
-    }
-
-    expect(actions.setFilter(filter)).toEqual(expectedAction)
-  })
-
   it('should create an action to show trails', () => {
     const trails = { trailA: { name: 'trailA',
                                difficulty: 'green',
@@ -55,13 +39,15 @@ describe('Testing actions', () => {
                                summary: 'its a steep trail'
                              }
                   }
+    const diffLevel = 'green'
 
     const expectedAction = {
       type: 'SHOW_TRAILS',
-      trails
+      trails,
+      diffLevel
     }
 
-    expect(actions.showTrails(trails)).toEqual(expectedAction)
+    expect(actions.showTrails(trails, diffLevel)).toEqual(expectedAction)
   })
 
   it('should create an action to get trail conditions', () => {
@@ -92,7 +78,7 @@ describe('Testing async actions', () => {
     nock.cleanAll()
   })
 
-  it('creates GET_TRAILS and SHOW_TRAILS when fetching trails has been completed', () => {
+  it.only('creates GET_TRAILS and SHOW_TRAILS when fetching trails has been completed', () => {
 
     nock('https://maps.google.com')
     .get('/api/geocode/json?addres=denver')
@@ -103,8 +89,8 @@ describe('Testing async actions', () => {
     .reply(200, trails )
 
     const expectedActions = [
-      { type: 'GET_TRAILS', trails},
-      { type: 'SHOW_TRAILS', trails}
+      { type: 'GET_TRAILS', trails },
+      { type: 'SHOW_TRAILS', trails, diffLevel: undefined }
     ]
 
     const store = mockStore({ trails: {}, display: {} })
