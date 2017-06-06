@@ -42,7 +42,7 @@ export const TrailConditions = ({ currentConditions }) => {
         Back To Trails
       </NavLink>
       <h4>{currentConditions.name}</h4>
-      <img  alt={currentConditions.conditionColor}
+      <img  id='meter'alt={currentConditions.conditionColor}
             src={currentConditions.conditionImg} />
       <p>{currentConditions.conditionStatus}</p>
       <p>{currentConditions.conditionDetails}</p>
