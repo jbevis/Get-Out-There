@@ -20,8 +20,15 @@ export default class CardGrid extends Component {
       }
       return acc
     },{});
-    handleFilter(filtered)
-    handleSetDisplay(filtered)
+
+    const filterCheck = Object.keys(filtered)
+
+    if (!filterCheck.length) {
+      handleSetDisplay(trails)
+    } else {
+      handleFilter(filtered)
+      handleSetDisplay(filtered)
+    }
   }
 
   render() {
