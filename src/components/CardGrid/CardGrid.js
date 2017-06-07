@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Card } from '../Card/Card';
-import { WelcomeCard } from '../WelcomeCard/WelcomeCard'
+import { WelcomeCard } from '../WelcomeCard/WelcomeCard';
+import FilterControls from '../FilterControls/FilterControls'
 import PropTypes from 'prop-types';
 
 export default class CardGrid extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      filter: ''
-    }
+    // this.state = {
+    //   filter: ''
+    // }
   }
 
   render() {
@@ -21,7 +22,9 @@ export default class CardGrid extends Component {
     else if (!displayKeys.length) {
       return (
         <section className="card-grid">
-          <div id="filter-bar">
+          <FilterControls trails={trails}
+                          handleSetDisplay={handleSetDisplay} />
+          {/* <div id="filter-bar">
             <label>Filter by Difficulty:</label>
             <select name='difficulty'
               onChange={(e) => {this.setState({filter: e.target.value})}}>
@@ -37,7 +40,7 @@ export default class CardGrid extends Component {
               onClick={() => handleSetDisplay(trails, this.state.filter)}>
               Filter
             </button>
-          </div>
+          </div> */}
           <section className='welcome-card'>
             <h3>Sorry, no trails matched that difficulty</h3>
             <p id='back-link'
@@ -51,7 +54,10 @@ export default class CardGrid extends Component {
 
     return (
       <section className="card-grid">
-        <div id="filter-bar">
+        <FilterControls trails={trails}
+                        handleSetDisplay={handleSetDisplay} />
+
+        {/* <div id="filter-bar">
           <label>Filter by Difficulty:</label>
           <select name='difficulty'
             onChange={(e) => {this.setState({filter: e.target.value})}}>
@@ -67,7 +73,7 @@ export default class CardGrid extends Component {
                   onClick={() => handleSetDisplay(trails, this.state.filter)}>
             Filter
           </button>
-        </div>
+        </div> */}
         { displayKeys.map((key, index) => {
           return (
             <Card key={index}
