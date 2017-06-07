@@ -38,7 +38,7 @@ describe('CardGrid testing', () => {
     filterSet.simulate('change', { target: { value: 'greenBlue' }})
     filterBtn.simulate('click')
 
-    expect(mockFn).toHaveBeenCalledTimes(2)
+    expect(mockFn).toHaveBeenCalledTimes(1)
   })
 
 })

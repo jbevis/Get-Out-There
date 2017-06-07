@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from '../Card/Card';
+import { WelcomeCard } from '../WelcomeCard/WelcomeCard'
 import PropTypes from 'prop-types';
 
 export default class CardGrid extends Component {
@@ -10,36 +11,44 @@ export default class CardGrid extends Component {
     }
   }
 
-  filterByDifficulty(diffLevel) {
-    const { trails, handleFilter, handleSetDisplay } = this.props;
-    const filtered = Object.keys(trails).reduce((acc, key) => {
-      if (trails[key].difficulty === diffLevel) {
-        acc[key] = trails[key]
-      } else if (diffLevel === 'show-all') {
-        acc = trails
-      }
-      return acc
-    },{});
-
-    const filterCheck = Object.keys(filtered)
-
-    if (!filterCheck.length) {
-      handleSetDisplay(trails)
-    } else {
-      handleFilter(filtered)
-      handleSetDisplay(filtered)
-    }
-  }
-
   render() {
-    const { displayTrails, handleGetConditions } = this.props;
-    const trailKeys = Object.keys(displayTrails)
+    const { trails, displayTrails, handleSetDisplay, handleGetConditions } = this.props;
+    const trailKeys = Object.keys(trails)
+    const displayKeys = Object.keys(displayTrails)
 
-    if (!trailKeys.length) {
+    if (!trailKeys.length) { return <WelcomeCard /> }
+
+    else if (!displayKeys.length) {
       return (
-        <h3 className='no-data'>Find your next adventure</h3>
+        <section className="card-grid">
+          <div id="filter-bar">
+            <label>Filter by Difficulty:</label>
+            <select name='difficulty'
+              onChange={(e) => {this.setState({filter: e.target.value})}}>
+              <option value='show-all'>Show All</option>
+              <option value='green'>Easy</option>
+              <option value='greenBlue'>Easy/Intermediate</option>
+              <option value='blue'>Intermediate</option>
+              <option value='blueBlack'>Intermediate/Difficult</option>
+              <option value='black'>Difficult</option>
+              <option value='dblack'>Extremely Difficult</option>
+            </select>
+            <button className='filter-btn'
+              onClick={() => handleSetDisplay(trails, this.state.filter)}>
+              Filter
+            </button>
+          </div>
+          <section className='welcome-card'>
+            <h3>Sorry, no trails matched that difficulty</h3>
+            <p id='back-link'
+               onClick={() => handleSetDisplay(trails, 'show-all') } >
+              Back to trails
+            </p>
+          </section>
+        </section>
       )
     }
+
     return (
       <section className="card-grid">
         <div id="filter-bar">
@@ -55,20 +64,20 @@ export default class CardGrid extends Component {
             <option value='dblack'>Extremely Difficult</option>
           </select>
           <button className='filter-btn'
-            onClick={() => this.filterByDifficulty(this.state.filter)}>
+                  onClick={() => handleSetDisplay(trails, this.state.filter)}>
             Filter
           </button>
         </div>
-        { trailKeys.map((key, index) => {
+        { displayKeys.map((key, index) => {
           return (
             <Card key={index}
                   trail={displayTrails[key]}
                   handleGetConditions={handleGetConditions}/>
-          )
-        }) }
-      </section>
-    )
-  }
+            )
+          }) }
+        </section>
+      )
+    }
 }
 
 CardGrid.propTypes = {
