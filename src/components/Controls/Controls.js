@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 export default class Controls extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class Controls extends Component {
     handleGetTrails(location, radius)
     handleSetDisplay(trails)
     this.setState({ searchArea: '', searchRadius: '' })
+
   }
 
   render() {
@@ -41,12 +43,13 @@ export default class Controls extends Component {
                    this.setState({ searchRadius: e.target.value })}
                  } />
         </div>
-        <button  id='search'
-                 onClick={() => {
+        <NavLink  id='search'
+                  to='/'
+                  onClick={() => {
                   this.setStore(this.state.searchArea, this.state.searchRadius)}
         }>
           Search
-        </button>
+        </NavLink>
       </section>
     )
   }

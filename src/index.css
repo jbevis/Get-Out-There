@@ -67,7 +67,8 @@ button:hover {
 
 .copyright {
   color: #E6DED1;
-  margin-top: 320px;
+  margin-top: 100%;
+  opacity: 0.5;
 }
 
 .welcome-card {
@@ -104,11 +105,27 @@ button:hover {
   margin-left: 5px;
   margin-bottom: 5px;
   color: #FFE242;
+
 }
 
 #search {
   margin-top: 25px;
   font-size: 12px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #5B775F;
+  border-radius: 10px;
+  height: 42px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 90%;
+}
+
+#search:hover {
+  color: #FFE242;
+  cursor: pointer;
 }
 
 .no-data {
