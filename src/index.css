@@ -195,7 +195,7 @@ button:hover {
 }
 
 .trail-conditions p {
-  max-width: 80px;
+  max-width: 300px;
 }
 
 .trail-conditions .button {
@@ -204,6 +204,10 @@ button:hover {
 
 .trail-conditions .button:hover {
   color: #5B775F;
+}
+
+#meter {
+  width: 75px;
 }
 
 @media screen and (max-width: 950px) {
