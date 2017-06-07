@@ -22,23 +22,11 @@ describe('CardGrid testing', () => {
 
   it('should render a filter bar', () => {
 
-    expect(wrapper.find('label').length).toEqual(1)
-    expect(wrapper.find('option').length).toEqual(7)
+    expect(wrapper.find('FilterControls').length).toEqual(1)
   })
 
   it('should render a card for each trail that is in state', () => {
 
     expect(wrapper.find('Card').length).toEqual(5)
   })
-
-  it('should be able to set the filter', () => {
-    const filterSet = wrapper.find('select')
-    const filterBtn = wrapper.find('.filter-btn')
-
-    filterSet.simulate('change', { target: { value: 'greenBlue' }})
-    filterBtn.simulate('click')
-
-    expect(mockFn).toHaveBeenCalledTimes(1)
-  })
-
 })
