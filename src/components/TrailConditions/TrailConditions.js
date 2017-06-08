@@ -1,26 +1,12 @@
 import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryStack, VictoryTheme } from 'victory';
 import { NavLink } from 'react-router-dom';
+import { createElevGain, createTotalGain } from '../../ops/graphData'
 import PropTypes from 'prop-types';
 
 export const TrailConditions = ({ currentConditions }) => {
-  const elevGain = [
-  {trailPoint: 1, elev: currentConditions.high},
-  {trailPoint: 2, elev: currentConditions.high + (currentConditions.ascent / 2)},
-  {trailPoint: 3, elev: currentConditions.low},
-  {trailPoint: 4, elev: currentConditions.high + (currentConditions.ascent / 2)},
-  {trailPoint: 5, elev: currentConditions.high}
-];
-
-  const totalGain = [
-  {trailPoint: 1, elev: currentConditions.ascent},
-  {trailPoint: 2, elev: currentConditions.ascent - (currentConditions.ascent / 2)},
-  {trailPoint: 3, elev: 0},
-  {trailPoint: 4, elev: (currentConditions.ascent / 2)},
-  {trailPoint: 5, elev: currentConditions.ascent}
-];
-
   const currentKeys = Object.keys(currentConditions)
+  
   if (!currentKeys.length) {
     return (
       <section   className="trail-conditions">
@@ -66,11 +52,11 @@ export const TrailConditions = ({ currentConditions }) => {
                       label='Elevation (feet)'
                       tickFormat={(x) => (`${x}'`)} />
         <VictoryStack colorScale={"heatmap"} >
-          <VictoryBar data={elevGain}
+          <VictoryBar data={createElevGain(currentConditions)}
                       x="trailPoint"
                       y="elev"
                       animate={{ onLoad: { duration: 500 } }} />
-          <VictoryBar data={totalGain}
+          <VictoryBar data={createTotalGain(currentConditions)}
                       x="trailPoint"
                       y="elev"
                       animate={{ onLoad: { duration: 500 } }} />
