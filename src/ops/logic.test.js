@@ -111,4 +111,11 @@ describe('testing helper functions', () => {
     expect(createElevGain(mockData)).toEqual(expectedGain)
     expect(createTotalGain(mockData)).toEqual(expectedTotal)
   })
+
+  it('should generate a random quote from given array', () => {
+    const array = ['hello', 'testing', '123']
+    const expected = 'hello' || 'testing' || '123'
+
+    expect(helpers.randomQuoteGenerate(array)).toEqual(expected)
+  })
 })

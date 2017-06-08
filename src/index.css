@@ -107,6 +107,12 @@ button:hover {
 
 }
 
+.quote {
+  font-family: 'Rock Salt', cursive;
+  font-weight: 400;
+  max-width: 400px;
+}
+
 #search {
   margin-top: 25px;
   font-size: 12px;
