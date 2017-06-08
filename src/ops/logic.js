@@ -17,6 +17,11 @@ export const imgCheck = (image) => {
   return image === "" ? icon : image
 }
 
+export const randomQuoteGenerate = (quotes) => {
+  console.log(quotes)
+  return quotes[Math.floor(Math.random()*quotes.length)];
+}
+
 export const difficultyLevel = (difficulty) => {
   switch (difficulty.difficulty) {
   case 'green':
