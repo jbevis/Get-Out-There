@@ -11,6 +11,14 @@ import { Route, Switch, NavLink } from 'react-router-dom';
         <header>
           <h1>Get Out There</h1>
         </header>
+        <NavLink className='navigation'
+                 to='maps' >
+          Map View
+        </NavLink>
+        <NavLink className='navigation'
+                 to='/' >
+          List View
+        </NavLink>
         <ControlsContainer />
         <Switch>
           <Route exact path='/' component={ CardGridContainer } />
@@ -21,6 +29,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
             render={() => { return (<TrailConditionsContainer history={ history }/>)}}
           />
         </Switch>
+        <div id='map'></div>
         <footer>
           <p className='copyright'>&#169; 2017 Jack Bevis</p>
         </footer>
