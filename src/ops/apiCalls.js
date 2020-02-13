@@ -1,13 +1,13 @@
-import { trailsKey } from '../apiKeys';
+import { trailsKey, mapquestKey } from '../apiKeys';
 import fetch from 'isomorphic-fetch';
 
 
 export default class apiCalls {
   static searchByLocation (location, radius) {
-    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}`)
+    return fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=${mapquestKey}&location=${location}`)
     .then((resp) => resp.json())
     .then((json) => {
-      const coordinates = json.results[0].geometry.location
+      const coordinates = json.results[0].locations[0].latLng;
 
       return this.getTrailsByLocation(coordinates.lat, coordinates.lng, radius)
     })

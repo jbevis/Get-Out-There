@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ControlsContainer from '../../containers/ControlsContainer';
 import CardGridContainer from '../../containers/CardGridContainer';
 import TrailConditionsContainer from '../../containers/TrailConditionsContainer';
@@ -11,14 +11,14 @@ import { Route, Switch, NavLink } from 'react-router-dom';
         <header>
           <h1>Get Out There</h1>
         </header>
-        <NavLink className='navigation'
+        {/* <NavLink className='navigation'
                  to='maps' >
           Map View
         </NavLink>
         <NavLink className='navigation'
                  to='/' >
           List View
-        </NavLink>
+        </NavLink> */}
         <ControlsContainer />
         <Switch>
           <Route exact path='/' component={ CardGridContainer } />
@@ -31,7 +31,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
         </Switch>
         <div id='map'></div>
         <footer>
-          <p className='copyright'>&#169; 2017 Jack Bevis</p>
+          <p className='copyright'>&#169; 2020 Jack Bevis</p>
         </footer>
     </main>
   )

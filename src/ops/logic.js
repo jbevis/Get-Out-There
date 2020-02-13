@@ -18,7 +18,6 @@ export const imgCheck = (image) => {
 }
 
 export const randomQuoteGenerate = (quotes) => {
-  console.log(quotes)
   return quotes[Math.floor(Math.random()*quotes.length)];
 }
 
