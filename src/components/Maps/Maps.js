@@ -1,16 +1,19 @@
 import React from 'react';
+import { mapboxKey } from '../../apiKeys';
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
-export const Maps = () => {
-  mapboxgl.accessToken = 'pk.eyJ1IjoiamJldmlzIiwiYSI6ImNpeXFhMTJrbTAwMGgyd20wcTcxcWxqdGEifQ.gMhUIj7c1hJmhPhLBv1ZLA';
+export const Maps = ({ center }) => {
+  mapboxgl.accessToken = mapboxKey;
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/outdoors-v10'
+    style: 'mapbox://styles/mapbox/outdoors-v10',
+    center: [39.738453, -104.984853],
+    zoom: 9
   });
 
   return (
     <section id='map'>
-      <h4>A map should go here</h4>
+
     </section>
   )
 }

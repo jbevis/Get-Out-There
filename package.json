@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
+    "gh-pages": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",
     "mapbox-gl": "^0.38.0",
     "react": "^15.4.2",
@@ -34,7 +35,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build&&gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "jest",
     "test:wtch": "npm tet -- --watch",
     "eject": "react-scripts eject"
